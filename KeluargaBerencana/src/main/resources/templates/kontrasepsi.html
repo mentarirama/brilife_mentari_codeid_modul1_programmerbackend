@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Keluarga Berencana</title>
+</head>
+<body>
+<div align="center">
+    <h1>Kontrasepsi List</h1>
+    <a href="new_kontrasepsi">Create New Kontrasepsi</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Kontrasepsi ID</th>
+                <th>Nama Kontrasepsi</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="kontrasepsi : ${listKontrasepsi}">
+            	<td th:text="${kontrasepsi.idKontrasepsi}">Kontrasepsi ID</td>
+                <td th:text="${kontrasepsi.namaKontrasepsi}">Nama</td>
+                <td>
+                	<a th:href="@{'/edit_kontrasepsi/' + ${kontrasepsi.idKontrasepsi}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete_kontrasepsi/' + ${kontrasepsi.idKontrasepsi}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     <form name='f' th:object="${kontrasepsiForm}" method='POST'>
+     <table>
+            <tr>
+                <td>Select Kontrasepsi:</td>
+                <td>
+                    <select th:field="*{idKontrasepsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="kontrasepsi : ${listKontrasepsis}"
+                            th:value="${kontrasepsi.idKontrasepsi}"
+                            th:utext="${kontrasepsi.namaKontrasepsi}"/></option>
+                  </select>
+ 
+                </td>
+            </tr>
+         
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    
+</div>    
+</body>
+</html>

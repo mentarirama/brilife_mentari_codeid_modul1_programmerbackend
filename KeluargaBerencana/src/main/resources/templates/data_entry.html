@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Keluarga Berencana</title>
+</head>
+<body>
+<div align="center">
+     <form action="#" th:action="@{/save_pemakai}" th:object="${pemakaiKontrasepsi}"
+			method="post">
+     <table>
+            
+            <tr>
+                <td>Pilih Propinsi:</td>
+                <td>
+                    <select th:field="*{idPropinsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="listPropinsi : ${listPropinsis}"
+                            th:value="${listPropinsi.idPropinsi}"
+                            th:utext="${listPropinsi.namaPropinsi}"/></option>
+                  </select>
+ 
+             
+            </tr>
+            <tr>
+                <td>Pilih Kontrasepsi:</td>
+                <td>
+                    <select th:field="*{idKontrasepsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="listKontrasepsi : ${listKontrasepsis}"
+                            th:value="${listKontrasepsi.idKontrasepsi}"
+                            th:utext="${listKontrasepsi.namaKontrasepsi}"/></option>
+                  </select>
+ 
+                </td>
+            </tr>
+            <tr>
+            </td>
+                <td>Jumlah Pemakai:</td>
+					<td><input type="text" th:field="*{jumlahPemakai}" /></td>
+					</tr>
+         
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    
+</div>    
+</body>
+</html>

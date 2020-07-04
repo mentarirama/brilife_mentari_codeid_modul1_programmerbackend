@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Keluarga Berencana</title>
+</head>
+<body>
+<div align="center">
+     <form name='f' th:object="${listKontrasepsi}" method='POST'>
+     <table>
+            <tr>
+                <td>Select Kontrasepsi:</td>
+                <td>
+                    <select th:field="*{idKontrasepsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="kontrasepsi : ${listKontrasepsii}"
+                            th:value="${kontrasepsi.idKontrasepsi}"
+                            th:utext="${kontrasepsi.namaKontrasepsi}"/></option>
+                  </select>
+ 
+                </td>
+            </tr>
+            <form name='f' th:object="${listPropinsi}" method='POST'>
+     <table>
+            <tr>
+                <td>Select Propinsi:</td>
+                <td>
+                    <select th:field="*{idPropinsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="propinsi : ${listPropinsii}"
+                            th:value="${propinsi.idPropinsi}"
+                            th:utext="${propinsi.namaPropinsi}"/></option>
+                  </select>
+ 
+                </td>
+            </tr>
+         
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    
+</div>    
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Keluarga Berencana</title>
+</head>
+<body>
+<div align="center">
+    <h1>Propinsi List</h1>
+    <a href="new_propinsi">Create New Propinsi</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Propinsi ID</th>
+                <th>Nama Propinsi</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="propinsi : ${listPropinsis}">
+            	<td th:text="${listpropinsi.idPropinsi}">Propinsi ID</td>
+                <td th:text="${listpropinsi.namaPropinsi}">Nama</td>
+                <td>
+                	<a th:href="@{'/edit_propinsi/' + ${propinsi.idPropinsi}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete_propinsi/' + ${propinsi.idPropinsi}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     <form name='f' th:object="${listPropinsi}" method='POST'>
+     <table>
+            <tr>
+                <td>Select Propinsi:</td>
+                <td>
+                    <select th:field="*{idPropinsi}">
+                         <option value="0"> -- </option>
+                         <option th:each="propinsi : ${listPropinsii}"
+                            th:value="${propinsi.idPropinsi}"
+                            th:utext="${propinsi.namaPropinsi}"/></option>
+                  </select>
+ 
+                </td>
+            </tr>
+         
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    
+</div>    
+</body>
+</html>
